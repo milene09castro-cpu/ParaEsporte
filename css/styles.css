@@ -1,0 +1,428 @@
+/* Paleta de Cores (ParaEsporte) */
+:root {
+    --azul-escuro-pp: #011638;      
+    --laranja-queimado-pp: #FF5722; 
+    --branco: #ffffff;
+    --preto: #1a1a1a;
+    --cinza-texto: #cccccc;         
+    --fundo-secundario: #f0f4ff;    
+}
+
+/* Reset Básico */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    /* APLICAÇÃO DA FONTE POPPINS GLOBALMENTE */
+    font-family: 'Poppins', sans-serif;
+}
+
+body {
+    line-height: 1.6;
+    color: var(--preto);
+    background-color: var(--branco);
+}
+
+a {
+    text-decoration: none;
+    transition: all 0.3s ease;
+}
+
+/* Containers de Layout */
+.linear-container, .linear-container-cta {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 20px;
+}
+
+
+/* 1. Header e Navegação */
+.topo {
+    background-color: var(--azul-escuro-pp);
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.5);
+    height: 120px; /* Mantém a altura do seu cabeçalho */
+    
+    /* NOVO: Regras para fixar a navbar */
+    position: fixed; /* Fixa o elemento na posição da tela */
+    top: 0;          /* Alinha ao topo */
+    width: 100%;     /* Garante que ocupe a largura total */
+    z-index: 1000;   /* Garante que fique acima de outros elementos ao rolar */
+}
+.navbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center; /* Centraliza itens verticalmente */
+    height: 100%; /* Ocupa a altura total do topo */
+    padding: 0 20px; 
+}
+
+.img-brand {
+    height: 100px; /* Ajusta o tamanho da nova logo */
+}
+
+.nav-list {
+    display: flex;
+    /* CENTRALIZA AS OPÇÕES DE NAVEGAÇÃO */
+    flex-grow: 1; /* Permite que a lista ocupe espaço extra */
+    justify-content: center; /* Centraliza os links dentro do espaço disponível */
+    gap: 40px; /* Aumenta o espaçamento entre os links */
+}
+
+.nav-link {
+    color: var(--branco);
+    font-weight: 500;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    padding: 10px 0; /* Aumenta a área de clique */
+}
+/* ... restante do CSS (sem alterações nas classes abaixo) ... */
+.nav-link:hover {
+    color: var(--laranja-queimado-pp);
+}
+
+.hamburguer{
+    display: none;
+    cursor: pointer;
+}
+
+.bar{
+    display: block;
+    width: 28px;
+    height: 3px;
+    border-radius: 2px;
+    margin: 5px;
+    background-color: var(--branco);
+    transition: all 0.3s ease-in-out;
+}
+@media (max-width:768px){
+    .hamburguer{
+        display: block;
+    }
+    .hamburguer.active .bar:nth-child(2){
+        opacity: 0;
+    }
+    .hamburguer.active .bar:nth-child(1){
+        transform: translateY(8px) rotate(45deg);
+    }
+    .hamburguer.active .bar:nth-child(3){
+        transform: translateY(-8px) rotate(-45deg);
+    }
+
+    .nav-menu{
+    position: fixed;
+    left: -100%;
+    top: 70px;
+    gap: 0;
+    border-radius: 0 0 20px 20px;
+    background-color: var(--branco);
+    text-align: center;
+    flex-direction: column;
+    width: 100%;
+    transition: 0.3s;
+    }
+    .nav-item{
+        margin: 16px 0;
+    }
+    .nav-menu-active{
+        left: 0;
+    }
+}
+
+/* Botão CTA Principal (Header) */
+.btn-cta {
+    background-color: var(--laranja-queimado-pp);
+    color: var(--branco);
+    padding: 10px 20px;
+    border-radius: 5px;
+    font-weight: bold;
+    text-transform: uppercase;
+}
+
+.btn-cta:hover {
+    background-color: #e44d1e; /* Laranja um pouco mais escuro */
+}
+
+/* 2. Seção Hero (Landing Page) - Título em Cima da Imagem */
+.hero-section {
+    position: relative;
+    height: 100vh; 
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    overflow: hidden;
+}
+
+/* Imagem de Fundo/Elemento (Deve ser a imagem fornecida pelo usuário) */
+.hero-image {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover; 
+    z-index: 1; 
+}
+
+/* Camada de Sobreposição (Para legibilidade) */
+.overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.5); 
+    z-index: 2;
+}
+
+.texto-hero-section {
+    position: relative;
+    z-index: 3; 
+    max-width: 800px;
+    padding: 20px;
+    color: var(--branco);
+}
+
+.titulo-hero {
+    font-size: 4em;
+    font-weight: 900;
+    color: var(--branco);
+    margin-bottom: 0.3em;
+    text-shadow: 2px 2px 8px rgba(0, 0, 0, 0.7);
+}
+
+.description-hero {
+    font-size: 1.3em;
+    color: var(--cinza-texto);
+    margin-bottom: 40px;
+    text-shadow: 1px 1px 4px rgba(0, 0, 0, 0.7);
+}
+
+.button-hero-container {
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+}
+
+/* Botões da Hero Section */
+.btn-vta, .btn-secondary {
+    padding: 15px 35px;
+    border-radius: 5px;
+    font-weight: bold;
+    text-align: center;
+    text-transform: uppercase;
+    font-size: 1.1em;
+}
+
+.btn-vta { 
+    background-color: var(--laranja-queimado-pp);
+    color: var(--branco);
+    border: 2px solid var(--laranja-queimado-pp);
+}
+
+.btn-vta:hover {
+    background-color: transparent;
+    border-color: var(--branco);
+    color: var(--branco);
+}
+
+.btn-secondary { 
+    background: none;
+    color: var(--branco);
+    border: 2px solid var(--branco);
+}
+
+.btn-secondary:hover {
+    background-color: var(--branco);
+    color: var(--azul-escuro-pp);
+}
+
+/* 3. Seção Quem Somos (Pequeno Texto) */
+.quem-somos-section {
+    padding: 80px 20px;
+    background-color: var(--fundo-secundario);
+    text-align: center;
+}
+
+.titulo-quem-somos {
+    font-size: 2.5rem;
+    color: var(--azul-escuro-pp);
+    margin-bottom: 20px;
+}
+
+.texto-quem-somos {
+    max-width: 800px;
+    margin: 0 auto;
+    font-size: 1.15rem;
+    color: var(--preto);
+}
+
+/* 4. Seção de Cards (Modalidades) */
+.modalidades-section {
+    padding: 80px 20px;
+    text-align: center;
+    background-color: var(--branco);
+}
+
+.titulo-modalidades {
+    font-size: 2.5rem;
+    color: var(--azul-escuro-pp);
+    margin-bottom: 50px;
+}
+
+.cards-grid {
+    max-width: 1100px;
+    margin: 0 auto;
+    display: flex;
+    justify-content: center;
+    gap: 30px;
+    flex-wrap: wrap; 
+}
+
+.card-modalidade {
+    flex: 1;
+    min-width: 280px;
+    max-width: 350px;
+    padding: 30px;
+    border-radius: 8px;
+    background-color: var(--fundo-secundario);
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+    text-align: center;
+    transition: transform 0.3s;
+}
+
+.card-modalidade:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.15);
+}
+
+.icon-modalidade {
+    width: 100px;
+    height: 100px;
+    margin-bottom: 15px;
+}
+
+.subtitulo-card {
+    color: var(--azul-escuro-pp);
+    margin-bottom: 10px;
+    font-size: 1.4rem;
+}
+
+.texto-card-modalidade {
+    color: var(--preto);
+    font-size: 1em;
+}
+
+/* 5. Seção de Cards (atletas em destaque) */
+.atletas-em-destaque-section {
+    padding: 80px 20px;
+    text-align: center;
+    background-color: var(--fundo-secundario);
+}
+
+.titulo-atletas-em-destaque {
+    font-size: 2.5rem;
+    color: var(--azul-escuro-pp);
+    margin-bottom: 50px;
+}
+
+.cards-grid {
+    max-width: 1100px;
+    margin: 0 auto;
+    display: flex;
+    justify-content: center;
+    gap: 30px;
+    flex-wrap: wrap; 
+}
+
+.card-atletas-em-destaque {
+    flex: 1;
+    min-width: 280px;
+    max-width: 350px;
+    padding: 30px;
+    border-radius: 8px;
+    background-color: var(--branco);
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+    text-align: center;
+    transition: transform 0.3s;
+}
+
+.card-atletas-em-destaque:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.15);
+}
+
+.icon-brand-atletas-em-destaque {
+    width: 50px;
+    height: 50px;
+    margin-bottom: 15px;
+}
+
+.subtitulo-card {
+    color: var(--azul-escuro-pp);
+    margin-bottom: 10px;
+    font-size: 1.4rem;
+}
+
+.texto-card-atletas-em-destaque {
+    color: var(--preto);
+    font-size: 1em;
+}
+
+
+/* 6. Rodapé (Footer) */
+.rodape {
+    background-color: var(--azul-escuro-pp);
+    color: var(--cinza-texto);
+    text-align: center;
+    padding: 30px 0;
+    font-size: 0.9rem;
+    border-top: 3px solid var(--laranja-queimado-pp);
+}
+
+.links-rodape {
+    margin-top: 15px;
+}
+
+.links-rodape a {
+    color: var(--cinza-texto);
+    margin: 0 15px;
+}
+
+.links-rodape a:hover {
+    color: var(--laranja-queimado-pp);
+}
+
+/* Media Queries para responsividade */
+@media (max-width: 900px) {
+    .titulo-hero {
+        font-size: 3em;
+    }
+    .cards-grid {
+        flex-direction: column;
+        align-items: center;
+    }
+}
+@media (max-width: 768px) {
+    /* Ajusta a navegação para telas menores */
+    .nav-list {
+        display: none; /* Oculta em telas menores, necessitaria de um menu sanduíche */
+    }
+    .navbar {
+        justify-content: space-around; /* Mantém logo e botão visíveis */
+    }
+    .titulo-hero {
+        font-size: 2.5em;
+    }
+    .description-hero {
+        font-size: 1em;
+    }
+    .button-hero-container {
+        flex-direction: column;
+        gap: 10px;
+    }
+    .btn-vta, .btn-secondary {
+        width: 80%;
+        margin: 0 auto;
+    }
+}
